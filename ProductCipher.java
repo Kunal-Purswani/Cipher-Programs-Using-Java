@@ -8,14 +8,18 @@ public class ProductCipher {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter depth for Rail Fence Cipher: ");
         int depth = Integer.parseInt(sc.nextLine());
-        return "Encrypted Text: " + rfc.encryptText(cc.encryptText(plainText), depth);
+        String caesar = cc.encryptText(plainText);
+        System.out.println("Caesar Cipher Output: " + caesar);
+        return "Encrypted Text: " + rfc.encryptText(caesar, depth);
     }
 
     public String decrypt(String plainText) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter depth for Rail Fence Cipher: ");
         int depth = Integer.parseInt(sc.nextLine());
-        return "Decrypted Text: " + cc.decryptText(rfc.decryptText(plainText, depth));
+        String rfcOutput = rfc.decryptText(plainText, depth);
+        System.out.println("Rail Fence Cipher Output: " + rfcOutput);
+        return "Decrypted Text: " + cc.decryptText(rfcOutput);
     }
 
     public static void main(String[] args) {
@@ -93,9 +97,8 @@ class RailFenceCipher {
         plainText = plainText.toLowerCase();
         String[][] mat = new String[depth][plainText.length()];
         for (int i = 0; i < depth; i++) {
-            for (int j = 0; j < plainText.length(); j++) {
+            for (int j = 0; j < plainText.length(); j++)
                 mat[i][j] = "*";
-            }
         }
         int row = 0;
         for (int i = 0; i < plainText.length(); i++) {
@@ -120,9 +123,8 @@ class RailFenceCipher {
         encryptedText = encryptedText.toLowerCase();
         String[][] mat = new String[depth][encryptedText.length()];
         for (int i = 0; i < depth; i++) {
-            for (int j = 0; j < encryptedText.length(); j++) {
+            for (int j = 0; j < encryptedText.length(); j++)
                 mat[i][j] = "*";
-            }
         }
         int row = 0;
         for (int i = 0; i < encryptedText.length(); i++) {

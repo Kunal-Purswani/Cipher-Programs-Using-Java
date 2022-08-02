@@ -28,6 +28,18 @@ class Helper {
         return mat;
     }
 
+    public void printMatrix(String mat[][]) {
+        System.out.println("\nPlay Fair Matrix:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("  ");
+            for (int j = 0; j < 5; j++) {
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        System.out.println("");
+    }
+
     public int checkRow(String mat[][], int row, String elem) {
         int pos = -1;
         for (int i = 0; i < 5; i++) {
@@ -101,6 +113,7 @@ class PlayFairCipher {
         String encryptedText = "";
         System.out.print("Enter keyword: ");
         String mat[][] = helper.makeMatrix(sc.nextLine());
+        helper.printMatrix(mat);
         plainText = helper.insertBogus(plainText);
         for (int i = 0; i < plainText.length(); i += 2) {
             String currLetter = "" + plainText.charAt(i), nextLetter = "" + plainText.charAt(i + 1);
@@ -129,6 +142,7 @@ class PlayFairCipher {
         String decryptedText = "";
         System.out.print("Enter keyword: ");
         String mat[][] = helper.makeMatrix(sc.nextLine());
+        helper.printMatrix(mat);
         for (int i = 0; i < plainText.length(); i += 2) {
             String currLetter = "" + plainText.charAt(i), nextLetter = "" + plainText.charAt(i + 1);
             for (int j = 0; j < 5; j++) {
@@ -182,14 +196,14 @@ class PlayFairCipher {
             int ch = Integer.parseInt(sc.nextLine());
             switch (ch) {
                 case 1:
-                    System.out.println("Enter text to encrypt: ");
+                    System.out.print("Enter text to encrypt: ");
                     String text = sc.nextLine();
-                    System.out.println("Encrypted Text: " + pfc.encrypt(sc,text));
+                    System.out.println("Encrypted Text: " + pfc.encrypt(sc, text));
                     break;
                 case 2:
-                    System.out.println("Enter cipher to decrypt: ");
+                    System.out.print("Enter cipher to decrypt: ");
                     String cipher = sc.nextLine();
-                    System.out.println("Decrypted Text: " + pfc.decrypt(sc,cipher));
+                    System.out.println("Decrypted Text: " + pfc.decrypt(sc, cipher));
                     break;
                 case 3:
                     System.out.println("Thank you for running this program.");
